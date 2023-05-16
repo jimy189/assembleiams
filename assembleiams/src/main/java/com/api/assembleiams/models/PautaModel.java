@@ -1,27 +1,28 @@
 package com.api.assembleiams.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "TB_PAUTA")
-public class AssembleiaModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class PautaModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idPauta;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable=false, updatable=false)
+    private Integer id;
     private String nomePauta;
     private Integer VotosTotais;
-    private LocalDateTime dataRegisto;
+    private Integer duracaoSessao;
+    private Timestamp dataRegisto;
+    private Boolean votar;
 }

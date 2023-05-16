@@ -4,9 +4,14 @@ import com.api.assembleiams.enums.StatusVoto;
 import lombok.Data;
 
 @Data
-public class OpcaoDto {
+public class VotarDto {
 
     private String nomeOpcao;
-    private Integer idSessao;
-    private Integer idPauta;
+    private Integer sessao;
+    private Integer pauta;
+    private Integer opcao;
+    private String cpf;
+    private StatusVoto statusVoto;
+    //  private cpf
+    //  private idUsuario
 }

@@ -1,6 +1,6 @@
 package com.api.assembleiams.enums;
 
-public enum StatusVoto {
-    SIM,
-    NAO
+public enum StatusCPF {
+    ABLE_TO_VOTE,
+    UNABLE_TO_VOTE
 }

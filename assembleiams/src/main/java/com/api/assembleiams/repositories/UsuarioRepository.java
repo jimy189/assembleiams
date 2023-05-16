@@ -1,11 +1,15 @@
 package com.api.assembleiams.repositories;
 
 
-import com.api.assembleiams.models.SessaoModel;
-import com.api.assembleiams.models.VotosModel;
+import com.api.assembleiams.enums.StatusVoto;
+import com.api.assembleiams.models.QTDVotosModel;
+import com.api.assembleiams.models.UsuarioModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 
-public interface VotosRepository extends JpaRepository<VotosModel, Integer> {
+
+public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> {
+    Optional<UsuarioModel> findByCpf(String cpf);
 
 }

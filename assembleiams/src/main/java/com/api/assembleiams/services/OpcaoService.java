@@ -1,7 +1,11 @@
 package com.api.assembleiams.services;
 
+import com.api.assembleiams.dto.OpcaoDto;
+import com.api.assembleiams.dto.PautaDto;
+import com.api.assembleiams.models.OpcaoModel;
 import com.api.assembleiams.models.PautaModel;
 import com.api.assembleiams.models.SessaoModel;
+import com.api.assembleiams.repositories.OpcaoRepository;
 import com.api.assembleiams.repositories.SessaoRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +14,36 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SessaoService {
+public class OpcaoService {
 
-    final SessaoRepository sessaoRepository;
+    final OpcaoRepository opcaoRepository;
 
-    public SessaoService(SessaoRepository sessaoRepository) {
-        this.sessaoRepository = sessaoRepository;
+    public OpcaoService(OpcaoRepository opcaoRepository) {
+        this.opcaoRepository = opcaoRepository;
     }
 
-    public SessaoModel save(PautaModel pautaModel) {
-        var sessaoModelModel = new SessaoModel();
-        sessaoModelModel.setPautaByPauta(pautaModel);
-        sessaoModelModel.setDataHoraInicio(pautaModel.getDataRegisto());
-        long valor = pautaModel.getDataRegisto().getTime() + ((pautaModel.getDuracaoSessao() * 60) * 1000);
-        sessaoModelModel.setDataHoraFim(new Timestamp(valor));
-        sessaoModelModel.setPauta(pautaModel.getId());
-        return sessaoRepository.save(sessaoModelModel);
+    public void save(List<OpcaoDto> listapautaDto,Integer idSessao, Integer idPauta) {
+
+        for (OpcaoDto opcao : listapautaDto) {
+            var opcaoModel = new OpcaoModel();
+            opcaoModel.setNomeOpcao(opcao.getNomeOpcao());
+            opcaoModel.setSessao(idSessao);
+            opcaoModel.setPauta(idPauta);
+            opcaoRepository.save(opcaoModel);
+        }
+
     }
 
-    public List<SessaoModel> findAll() {
-        return sessaoRepository.findAll();
+    public List<OpcaoModel> findAll() {
+        return opcaoRepository.findAll();
     }
 
-    public Optional<SessaoModel> findById(Integer id) {
-        return sessaoRepository.findById(id);
+    public Optional<OpcaoModel> findById(Integer id) {
+        return opcaoRepository.findById(id);
     }
 
+    public List<OpcaoModel> findAllByIdPautaByIdSessao(Integer idPauta,
+                                                       Integer idSessao) {
+        return opcaoRepository.findByPautaAndSessao(idPauta, idSessao);
+    }
 }

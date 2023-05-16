@@ -1,2 +1,6 @@
-package com.api.assembleiams.enums;public enum StatusVoto {
+package com.api.assembleiams.enums;
+
+public enum StatusVoto {
+    SIM,
+    NAO
 }

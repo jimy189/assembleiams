@@ -1,17 +1,13 @@
 package com.api.assembleiams.dto;
 
-import com.api.assembleiams.enums.StatusVoto;
+import com.api.assembleiams.enums.StatusCPF;
 import lombok.Data;
 
 @Data
-public class VotarDto {
+public class UsuarioDto {
 
-    private String nomeOpcao;
-    private Integer sessao;
-    private Integer pauta;
-    private Integer opcao;
+    private Integer id;
+    private String nome;
     private String cpf;
-    private StatusVoto statusVoto;
-    //  private cpf
-    //  private idUsuario
+    private StatusCPF statusCPF;
 }

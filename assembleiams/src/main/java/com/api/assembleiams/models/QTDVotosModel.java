@@ -12,8 +12,8 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "TB_VOTOS")
-public class VotosModel implements Serializable {
+@Table(name = "TB_QTDVOTOS")
+public class QTDVotosModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
